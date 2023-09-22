@@ -1,0 +1,48 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculatorBody {
+    margin-top: 110px;
+    display: flex;
+    flex-direction: column;
+    width : 400px;
+    height: 500px;
+    border: solid 2px blue;
+}
+
+.rows {
+    display:flex;
+    flex-direction: column;
+    flex:1 0 auto;
+    justify-content: space-between;
+}
+
+.row {
+    display: flex;
+    flex:1 0 auto;
+    justify-content: space-between;
+    border:solid 2px red;
+    gap: 5px;
+}
+
+.display {
+    display: flex;
+    border: solid 4px rgb(70, 68, 68);
+    justify-content: end;
+    align-items: end;
+    height: 80px;
+    font-size: 70px;
+    font-weight: 400;
+}
+
+.row button {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    margin:10px;
+}

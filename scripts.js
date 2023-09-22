@@ -2,6 +2,15 @@ function sum (a,b) {return a + b};
 function subtract (a,b) {return a - b};
 function multiply (a,b) {return a * b};
 function divide (a,b) {return a / b};
+function operateAgain (firstArgument, secondArgument, display, displayValue){
+    secondArgument = parseInt(displayValue);     
+    displayValue = window[operation](firstArgument,secondArgument);
+    display.innerHTML = displayValue;
+    firstArgument = parseInt(displayValue);
+    displayValue = '0';
+    secondArgument = 0;
+    return;
+}
 
 let firstArgument = 0;
 let secondArgument = 0;
@@ -24,27 +33,57 @@ erase.addEventListener('click', () => {
     secondArgument = 0;
 })
 
-let sumOf = document.querySelector('.sum')
-sumOf.addEventListener('click', () => {
+let sumEvent = document.querySelector('.sum')
+sumEvent.addEventListener('click', () => {
     if (firstArgument === 0) {
         firstArgument = parseInt(displayValue);
         displayValue = '0';
+        operation = 'sum';
     }
     else {
-        secondArgument = parseInt(displayValue);     
-        displayValue = sum (firstArgument, secondArgument);
-        display.innerHTML = displayValue;
+        operateAgain (firstArgument, secondArgument, display, displayValue)
+        operation = 'sum';
+    }
+})
+
+let multiplyEvent = document.querySelector('.multiply');
+multiplyEvent.addEventListener('click', () => {
+    if (firstArgument === 0) {
         firstArgument = parseInt(displayValue);
         displayValue = '0';
-        secondArgument = 0;
+        operation = 'multiply';
     }
+    else {
+        operateAgain (firstArgument, secondArgument, display, displayValue);
+        operation = 'multiply';
+    }
+});
+
+let divideEvent = document.querySelector('.divide');
+divideEvent.addEventListener('click', () => {
+    if (firstArgument === 0) {
+        firstArgument = parseInt(displayValue);
+        displayValue = '0';
+        operation = 'divide';
+    }
+    else operateAgain (firstArgument, secondArgument, display, displayValue)
+})
+
+let subtractEvent = document.querySelector('.subtract');
+subtractEvent.addEventListener('click', () => {
+    if (firstArgument === 0) {
+        firstArgument = parseInt(displayValue);
+        displayValue = '0';
+        operation = 'subtract';
+    }
+    else operateAgain (firstArgument, secondArgument, display, displayValue)
 })
 
 let equals = document.querySelector('.equals');
 equals.addEventListener('click', () => {
     if (firstArgument != 0) {
         secondArgument = parseInt(displayValue);
-        displayValue = sum(firstArgument, secondArgument);
+        displayValue = window[operation](firstArgument,secondArgument);       
         display.innerHTML = displayValue;
         firstArgument = displayValue;
         displayValue = '0';
